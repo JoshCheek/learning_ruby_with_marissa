@@ -5,7 +5,9 @@
 # * look up the receiver's class
 # * look for the method name in the class' instance methods
 #   * if it DNE, go to the superclass and look there
-#   * when we reach the top (BasicObject), we know the method DNE, so we explode
+#   * when we reach the top (BasicObject), we know the method DNE
+#     and pass the method call information to `receiver.method_missing`
+#     which, by default, explodes with a NoMethodError
 # * put a new binding on the callstack
 #   * with `self` set to the receiver
 #   * and the arguments as local variables based on the parameters
